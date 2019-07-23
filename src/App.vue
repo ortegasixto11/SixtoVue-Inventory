@@ -4,10 +4,13 @@
     <h1>{{ msg }}</h1>
     <!-- <h2>Essential Links</h2> -->
     <ul>
-      <li><a href="https://vuejs.org">Productos</a></li>
+      <!-- <li><a href="https://vuejs.org">Productos</a></li>
       <li><a href="https://forum.vuejs.org">Entradas</a></li>
       <li><a href="https://chat.vuejs.org">Salidas</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
+      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li> -->
+      <router-link to="/">Inicio</router-link> &nbsp;
+      <router-link to="products">Products</router-link>
+
     </ul>
     <!-- <h2>Ecosystem</h2>
     <ul>
@@ -16,12 +19,23 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul> -->
+
+    <router-view></router-view>
+
   </div>
 </template>
 
 <script>
+
+import ListProducts from './components/ListProducts.vue'
+import Products from './components/Products.vue'
+
 export default {
   name: 'app',
+  components: {
+    ListProducts,
+    Products
+  },
   data () {
     return {
       msg: 'Mi Inventario'
