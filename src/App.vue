@@ -9,7 +9,7 @@
       <li><a href="https://chat.vuejs.org">Salidas</a></li>
       <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li> -->
       <router-link to="/">Inicio</router-link> &nbsp;
-      <router-link to="products">Products</router-link>
+      <router-link to="products">Productos</router-link>
 
     </ul>
     <!-- <h2>Ecosystem</h2>
