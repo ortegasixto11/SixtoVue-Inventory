@@ -25,30 +25,27 @@
 
 <script>
 import {dbFirebase} from '../config/firebase'
-// import axios from 'axios'
 
 export default {
     mounted() {
-        // axios.get('https://miinventario-675b5.firebaseio.com/products.json')
-        //     .then(function(res){
-        //         console.log(res.data)
-        //         this.products.push(res.data[0])
-        //     })
-        //     .catch(function(err){
-        //         console.log(err)
-        //     })
         //this.products = dbFirebase.ref('products')
         
+        let products = {}
+        let instanceDB = dbFirebase.ref('products')
+        instanceDB.once('value')
+            .then(function(snapshot){
+                // console.log(snapshot.val())
+                // this.products = snapshot.val()
+                console.log(this.products)
+            })
+            .catch(function(err){
+                console.log(err)
+            })
     },
-    
     data(){
         return {
-            products: []
+            products: {}
         }
-    },
-    firebase: {
-        products: dbFirebase.ref('products')
-    },
-    
+    }
 }
 </script>

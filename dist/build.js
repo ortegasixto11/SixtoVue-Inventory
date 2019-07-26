@@ -3142,7 +3142,7 @@ process.umask = function() { return 0; };
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ListProducts_vue__ = __webpack_require__(9);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_794355a2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ListProducts_vue__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2b78d765_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ListProducts_vue__ = __webpack_require__(35);
 var normalizeComponent = __webpack_require__(5)
 /* script */
 
@@ -3159,7 +3159,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ListProducts_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_794355a2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ListProducts_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2b78d765_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ListProducts_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -3202,31 +3202,26 @@ var Component = normalizeComponent(
 //
 
 
-// import axios from 'axios'
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     mounted: function mounted() {
-        // axios.get('https://miinventario-675b5.firebaseio.com/products.json')
-        //     .then(function(res){
-        //         console.log(res.data)
-        //         this.products.push(res.data[0])
-        //     })
-        //     .catch(function(err){
-        //         console.log(err)
-        //     })
         //this.products = dbFirebase.ref('products')
 
+        var products = {};
+        var instanceDB = __WEBPACK_IMPORTED_MODULE_0__config_firebase__["a" /* dbFirebase */].ref('products');
+        instanceDB.once('value').then(function (snapshot) {
+            // console.log(snapshot.val())
+            // this.products = snapshot.val()
+            console.log(this.products);
+        }).catch(function (err) {
+            console.log(err);
+        });
     },
     data: function data() {
         return {
-            products: []
+            products: {}
         };
-    },
-
-    firebase: {
-        products: __WEBPACK_IMPORTED_MODULE_0__config_firebase__["a" /* dbFirebase */].ref('products')
     }
-
 });
 
 /***/ }),
@@ -3348,7 +3343,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_3_vuefire__["a" /* firestorePlugin */]);
 
-var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({ routes: __WEBPACK_IMPORTED_MODULE_4__routes_routes__["a" /* default */], mode: 'history' });
+// const router = new VueRouter({ routes, mode: 'history' })
+var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({ routes: __WEBPACK_IMPORTED_MODULE_4__routes_routes__["a" /* default */] });
 
 new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
   el: '#app',
