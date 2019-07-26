@@ -8,23 +8,29 @@
     </form>
   </div>
 </template>
+
 <script>
+import {dbFirebase} from '../config/firebase'
+let productsDB = dbFirebase.ref('products')
+
 export default {
-    mounted() {
-        document.getElementById('producto_nombre').focus()
-    },
-    data() {
-        return {
-            product: {
-            nombre: "",
-            cantidad: 0
-            }
-        };
-    },
-    methods: {
-        createProduct() {
-            console.log(this.product);
-        }
+  mounted() {
+    document.getElementById('producto_nombre').focus()
+  },
+  data() {
+    return {
+      product: {
+        nombre: "",
+        cantidad: 0
+      }
     }
-};
+  },
+  methods: {
+    createProduct() {
+      productsDB.push(this.product)
+      this.product.nombre = ""
+      alert('Se agrego el Producto')
+    }
+  }
+}
 </script>
