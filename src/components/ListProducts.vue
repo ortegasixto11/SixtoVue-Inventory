@@ -19,7 +19,7 @@
                 </tbody>
             </table>
         </center>
-        <pre>{{$data}}</pre>
+        <!-- <pre>{{$data}}</pre> -->
     </div>
 </template>
 
@@ -28,23 +28,23 @@ import {dbFirebase} from '../config/firebase'
 
 export default {
     mounted() {
-        //this.products = dbFirebase.ref('products')
-        
-        let products = {}
-        let instanceDB = dbFirebase.ref('products')
-        instanceDB.once('value')
-            .then(function(snapshot){
-                // console.log(snapshot.val())
-                // this.products = snapshot.val()
-                console.log(this.products)
-            })
-            .catch(function(err){
-                console.log(err)
-            })
+        dbFirebase.ref('products').once('value')
+            .then((snapshot) => this.loadData(snapshot.val()))
+            .catch((err) => console.log(err))
     },
     data(){
         return {
-            products: {}
+            products: []
+        }
+    },
+    methods: {
+        loadData(products){
+            for(let key in products){
+                this.products.push({
+                    nombre: products[key].nombre,
+                    cantidad: products[key].cantidad
+                })
+            }
         }
     }
 }
