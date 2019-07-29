@@ -8,8 +8,8 @@
       <li><a href="https://forum.vuejs.org">Entradas</a></li>
       <li><a href="https://chat.vuejs.org">Salidas</a></li>
       <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li> -->
-      <router-link to="/">Inicio</router-link> &nbsp;
-      <router-link to="products">Productos</router-link>
+      <router-link :to="{name: 'ProductList'}">Inicio</router-link> &nbsp;
+      <router-link :to="{name: 'ProductCreate'}">Productos</router-link>
 
     </ul>
     <!-- <h2>Ecosystem</h2>
@@ -28,13 +28,15 @@
 <script>
 
 import ListProducts from './components/ListProducts.vue'
-import Products from './components/Products.vue'
+import CreateProduct from './components/CreateProduct.vue'
+import UpdateProduct from './components/UpdateProduct.vue'
 
 export default {
   name: 'app',
   components: {
     ListProducts,
-    Products
+    CreateProduct,
+    UpdateProduct
   },
   data () {
     return {

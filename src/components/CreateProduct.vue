@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import { dbFirebase } from "../config/firebase";
-let productsDB = dbFirebase.ref("products");
+import { dbFirebase } from "../config/firebase"
+let productsDB = dbFirebase.ref("products")
 
 export default {
   mounted() {
-    document.getElementById("producto_nombre").focus();
+    document.getElementById("producto_nombre").focus()
   },
   data() {
     return {
@@ -44,7 +44,7 @@ export default {
             this.showNotification = false
           }, 1000);
         })
-        .catch(err => console.error("Error", err));
+        .catch(err => console.error("Error", err))
     }
   }
 };

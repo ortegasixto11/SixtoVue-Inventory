@@ -8,13 +8,15 @@
                         <th>Nombre</th>
                         <th>Cantidad</th>
                         <th>Acciones</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="item of products" v-bind:key="item['.key']">
                         <td>{{item.nombre}}</td>
                         <td>{{item.cantidad}}</td>
-                        <td><button>Eliminar</button></td>
+                        <td><button @click="deleteProduct(item.id)">Eliminar</button></td>
+                        <td> <router-link :to="{name: 'ProductUpdate', params: { id: item.id }}">Editar</router-link> </td>
                     </tr> 
                 </tbody>
             </table>
@@ -28,9 +30,11 @@ import {dbFirebase} from '../config/firebase'
 
 export default {
     mounted() {
-        dbFirebase.ref('products').once('value')
-            .then((snapshot) => this.loadData(snapshot.val()))
-            .catch((err) => console.log(err))
+        // dbFirebase.ref('products').on('value')
+        //     .then((snapshot) => this.loadData(snapshot.val()))
+        //     .catch((err) => console.log(err))
+        dbFirebase.ref('products').on('value', (snapshot) => this.loadData(snapshot.val()))
+        
     },
     data(){
         return {
@@ -39,11 +43,18 @@ export default {
     },
     methods: {
         loadData(products){
+            this.products = []
             for(let key in products){
                 this.products.push({
+                    id: key,
                     nombre: products[key].nombre,
                     cantidad: products[key].cantidad
                 })
+            }
+        },
+        deleteProduct(productId){
+            if(confirm('Eliminar Producto?')){
+                dbFirebase.ref('products').child(productId).remove()
             }
         }
     }
