@@ -1,25 +1,27 @@
 <template>
   <div id="app">
-    <div class="container">
+    <div class="container is-fluid">
       <br>
       <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <router-link :to="{name: 'ProductList'}" class="navbar-item">{{ app_name }}</router-link>
+          <router-link :to="{name: 'ProductList'}" class="navbar-item">Inicio</router-link>
+          <router-link :to="{name: 'ProductCreate'}" class="navbar-item">Productos</router-link>
 
-          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <!-- <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="true" data-target="navbarMenuItems">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-          </a>
+          </a> -->
         </div> <!-- end .navbar-brand -->
 
         <!-- Navbar Menu -->
-        <div class="navbar-menu">
+        <!-- <div id="navbarMenuItems" class="navbar-menu">
           <div class="navbar-start">
             <router-link :to="{name: 'ProductList'}" class="navbar-item">Inicio</router-link>
             <router-link :to="{name: 'ProductCreate'}" class="navbar-item">Productos</router-link>
           </div>
-        </div>
+        </div> -->
       </nav>
 
       <br>
