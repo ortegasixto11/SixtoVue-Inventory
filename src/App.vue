@@ -1,36 +1,40 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <h1>{{ msg }}</h1>
-    <!-- <h2>Essential Links</h2> -->
-    <ul>
-      <!-- <li><a href="https://vuejs.org">Productos</a></li>
-      <li><a href="https://forum.vuejs.org">Entradas</a></li>
-      <li><a href="https://chat.vuejs.org">Salidas</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li> -->
-      <router-link :to="{name: 'ProductList'}">Inicio</router-link> &nbsp;
-      <router-link :to="{name: 'ProductCreate'}">Productos</router-link>
+    <div class="container">
+      <br>
+      <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <router-link :to="{name: 'ProductList'}" class="navbar-item">{{ app_name }}</router-link>
 
-    </ul>
-    <!-- <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul> -->
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div> <!-- end .navbar-brand -->
 
-    <router-view></router-view>
+        <!-- Navbar Menu -->
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <router-link :to="{name: 'ProductList'}" class="navbar-item">Inicio</router-link>
+            <router-link :to="{name: 'ProductCreate'}" class="navbar-item">Productos</router-link>
+          </div>
+        </div>
+      </nav>
 
+      <br>
+      <router-view></router-view>
+    </div>
+    
   </div>
 </template>
 
 <script>
-
 import ListProducts from './components/ListProducts.vue'
 import CreateProduct from './components/CreateProduct.vue'
 import UpdateProduct from './components/UpdateProduct.vue'
 import ProductEntrada from './components/ProductEntrada.vue'
+import ProductSalida from './components/ProductSalida.vue'
 
 export default {
   name: 'app',
@@ -38,41 +42,13 @@ export default {
     ListProducts,
     CreateProduct,
     UpdateProduct,
-    ProductEntrada
+    ProductEntrada,
+    ProductSalida
   },
   data () {
     return {
-      msg: 'Mi Inventario'
+      app_name: 'Mi Inventario'
     }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>

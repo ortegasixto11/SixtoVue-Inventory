@@ -1,15 +1,42 @@
 <template>
-  <div>
-    <h2>Crear Producto</h2>
-    <form @submit.prevent="createProduct">
-      <label for>Nombre</label>
-      <input type="text" id="producto_nombre" v-model="product.nombre" autofocus="autofocus" />
-      <button type="submit">Guardar</button>
-    </form>
+  <div class="container">
+    <center>
+      <h2 class="title">Crear Producto</h2>
+    </center>
+
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+
+          <form @submit.prevent="save">
+            <div class="field">
+              <label class="label">Nombre</label>
+              <div class="control">
+                <input type="text" class="input" id="producto_nombre" v-model="product.nombre" />
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button class="button is-success" type="submit">Guardar</button>
+                <router-link :to="{name: 'ProductList'}" class="button is-link">Regresar</router-link>
+              </div>
+            </div>
+          </form>
+          <br>
+
+          <article class="message is-info" v-show="showNotification">
+            <div class="message-header">
+              <p>Info</p>
+            </div>
+
+            <div class="message-body">
+              {{ message }}
+            </div>
+          </article>
+        </div>
+
+      </div> <!-- div columns -->
     
-    <div v-show="showNotification">
-      <p><b>{{ message }}</b></p>
-    </div>
 
   </div>
 </template>
@@ -28,20 +55,20 @@ export default {
         nombre: "",
         cantidad: 0
       },
-      showNotification: true,
-      message: ''
+      showNotification: false,
+      message: 'Se agrego el Producto'
     };
   },
   methods: {
-    createProduct() {
+    save() {
       productsDB
         .push(this.product)
         .then(data => {
-          this.product.nombre = "";
-          this.message = 'Se agrego el Producto'
+          this.product.nombre = ""
+          this.showNotification = true
           setTimeout(() => {
-            this.message = ''
             this.showNotification = false
+            document.getElementById("producto_nombre").focus()
           }, 1000);
         })
         .catch(err => console.error("Error", err))

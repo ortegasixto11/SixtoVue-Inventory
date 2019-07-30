@@ -1,19 +1,13 @@
 <template>
     <div class="container">
         <center>
-            <h2 class="title">Editar Producto</h2>
+            <h2 class="title">Salida de Producto</h2>
+            <h3 class="subtitle"> {{ product.nombre }} </h3>
         </center>
 
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">
                 <form @submit.prevent="save">
-                    <div class="field">
-                        <label class="label">Nombre</label>
-                        <div class="control">
-                            <input type="text" class="input" id="producto_nombre" v-model="product.nombre" />
-                        </div>
-                    </div>
-
                     <div class="field">
                         <label class="label">Cantidad</label>
                         <div class="control">
@@ -30,7 +24,7 @@
                 </form>
             </div>
         </div>
-        
+
     </div>
 </template>
 
@@ -39,7 +33,7 @@ import {dbFirebase} from '../config/firebase'
 
 export default {
     mounted(){
-        document.getElementById("producto_nombre").focus()
+        document.getElementById('producto_cantidad').focus()
         dbFirebase.ref(`products/${this.$route.params.id}`)
             .on('value', (snapshot) => this.getProduct(snapshot.val(), this.$route.params.id))
     },
@@ -48,23 +42,23 @@ export default {
             product: {
                 id: '',
                 nombre: '',
+                cantidad_db: 0,
                 cantidad: 0
             }
         }
     },
     methods: {
+        getProduct(product, product_id){
+            this.product.id = product_id
+            this.product.nombre = product.nombre
+            this.product.cantidad_db = product.cantidad
+        },
         save(){
             dbFirebase.ref(`products/${this.product.id}`)
                 .update({
-                    nombre: this.product.nombre,
-                    cantidad: this.product.cantidad
+                    cantidad: parseFloat(this.product.cantidad_db) - parseFloat(this.product.cantidad)
                 })
             this.$router.push({name: 'ProductList'})
-        },
-        getProduct(product, productId){
-            this.product.id = productId
-            this.product.nombre = product.nombre
-            this.product.cantidad = product.cantidad
         }
     }
 }
