@@ -3,38 +3,45 @@
         <h2>Editar Producto</h2>
         <form @submit.prevent="updateProduct">
             <label for>Nombre</label>
-            <input type="text" id="producto_nombre" autofocus="autofocus" />
+            <input type="text" id="producto_nombre" v-model="product.nombre" autofocus="autofocus" />
+            <label for>Cantidad</label>
+            <input type="text" id="producto_cantidad" v-model="product.cantidad" />
             <button type="submit">Guardar</button>
         </form>
     </div>
-</template
+</template>
 
 <script>
-import { dbFirebase } from "../config/firebase"
-let productsDB = dbFirebase.ref("products")
-// dbFirebase.ref('products/' + '-LkzNuGxazlmXplF0Prj').on('value', (snapshot) => console.log(snapshot.val()))
+import {dbFirebase} from '../config/firebase'
 
 export default {
-    mounted() {
-        document.getElementById("producto_nombre").focus()
-        test()
+    mounted(){
+        dbFirebase.ref(`products/${this.$route.params.id}`)
+            .on('value', (snapshot) => this.getProduct(snapshot.val(), this.$route.params.id))
     },
     data(){
-        return{
+        return {
             product: {
-                nombre: "",
+                id: '',
+                nombre: '',
                 cantidad: 0
             }
         }
     },
     methods: {
         updateProduct(){
-            console.log('Sixto Update')
+            dbFirebase.ref(`products/${this.product.id}`)
+                .update({
+                    nombre: this.product.nombre,
+                    cantidad: this.product.cantidad
+                })
+            this.$router.push({name: 'ProductList'})
         },
-        test(){
-            <!-- console.log(this.$route.params.id) -->
-            console.log('Sixto Update')
+        getProduct(product, productId){
+            this.product.id = productId
+            this.product.nombre = product.nombre
+            this.product.cantidad = product.cantidad
         }
     }
-};
+}
 </script>

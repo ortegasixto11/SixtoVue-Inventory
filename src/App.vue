@@ -30,13 +30,15 @@
 import ListProducts from './components/ListProducts.vue'
 import CreateProduct from './components/CreateProduct.vue'
 import UpdateProduct from './components/UpdateProduct.vue'
+import ProductEntrada from './components/ProductEntrada.vue'
 
 export default {
   name: 'app',
   components: {
     ListProducts,
     CreateProduct,
-    UpdateProduct
+    UpdateProduct,
+    ProductEntrada
   },
   data () {
     return {

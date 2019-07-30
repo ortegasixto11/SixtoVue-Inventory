@@ -7,8 +7,9 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Cantidad</th>
-                        <th>Acciones</th>
+                        <th>Eliminar</th>
                         <th>Editar</th>
+                        <th>Entrada</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -17,6 +18,7 @@
                         <td>{{item.cantidad}}</td>
                         <td><button @click="deleteProduct(item.id)">Eliminar</button></td>
                         <td> <router-link :to="{name: 'ProductUpdate', params: { id: item.id }}">Editar</router-link> </td>
+                        <td> <router-link :to="{name: 'ProductIn', params: { id: item.id }}">Entrada</router-link> </td>
                     </tr> 
                 </tbody>
             </table>
@@ -51,6 +53,7 @@ export default {
                     cantidad: products[key].cantidad
                 })
             }
+            this.products = this.products.sort((a, b) => (a.nombre > b.nombre) ? 1 : -1)
         },
         deleteProduct(productId){
             if(confirm('Eliminar Producto?')){
