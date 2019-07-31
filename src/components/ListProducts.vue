@@ -1,29 +1,32 @@
 <template>
     <div class="container">
         <center>
-            <h2 class="title">Listado de Productos</h2>
-            <table class="table is-bordered">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Cantidad</th>
-                        <th>Eliminar</th>
-                        <th>Editar</th>
-                        <th>Entrada</th>
-                        <th>Salida</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item of products" v-bind:key="item['.key']">
-                        <td>{{item.nombre}}</td>
-                        <td>{{item.cantidad}}</td>
-                        <td><button class="button is-danger" @click="deleteProduct(item.id)">Eliminar</button></td>
-                        <td> <router-link :to="{name: 'ProductUpdate', params: { id: item.id }}" class="button is-warning">Editar</router-link> </td>
-                        <td> <router-link :to="{name: 'ProductIn', params: { id: item.id }}" class="button is-link">Entrada</router-link> </td>
-                        <td> <router-link :to="{name: 'ProductOut', params: { id: item.id }}" class="button is-link">Salida</router-link> </td>
-                    </tr> 
-                </tbody>
-            </table>
+            <h2>Listado de Productos</h2>
+            <div class="table-responsive-sm">
+                <table class="table table-bordered table-sm">
+                    <thead class="bg-info">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>Eliminar</th>
+                            <th>Editar</th>
+                            <th>Entrada</th>
+                            <th>Salida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item of products" v-bind:key="item['.key']">
+                            <td>{{item.nombre}}</td>
+                            <td>{{item.cantidad}}</td>
+                            <td> <button class="btn btn-danger" @click="deleteProduct(item.id)">Eliminar</button> </td>
+                            <td> <router-link :to="{name: 'ProductUpdate', params: { id: item.id }}" class="btn btn-warning">Editar</router-link> </td>
+                            <td> <router-link :to="{name: 'ProductIn', params: { id: item.id }}" class="btn btn-info">Entrada</router-link> </td>
+                            <td> <router-link :to="{name: 'ProductOut', params: { id: item.id }}" class="btn btn-info">Salida</router-link> </td>
+                        </tr> 
+                    </tbody>
+                </table>
+            </div>
+            
         </center>
         <br>
         <!-- <pre>{{$data}}</pre> -->

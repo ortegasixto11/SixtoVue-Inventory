@@ -1,31 +1,27 @@
 <template>
     <div class="container">
         <center>
-            <h2 class="title">Editar Producto</h2>
+            <h2>Editar Producto</h2>
         </center>
 
-        <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
+        <div class="row">
+            <div class="col">
+
+                <br>
                 <form @submit.prevent="save">
-                    <div class="field">
-                        <label class="label">Nombre</label>
-                        <div class="control">
-                            <input type="text" class="input" id="producto_nombre" v-model="product.nombre" />
-                        </div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" id="producto_nombre" v-model="product.nombre" />
                     </div>
 
-                    <div class="field">
-                        <label class="label">Cantidad</label>
-                        <div class="control">
-                            <input type="text" class="input" id="producto_cantidad" v-model="product.cantidad" />
-                        </div>
+                    <div class="form-group">
+                        <label>Cantidad</label>
+                        <input type="text" class="form-control" id="producto_cantidad" v-model="product.cantidad" />
                     </div>
 
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-success" type="submit">Guardar</button>
-                            <router-link :to="{name: 'ProductList'}" class="button is-link">Regresar</router-link>
-                        </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" type="submit">Guardar</button>
+                        <router-link :to="{name: 'ProductList'}" class="btn btn-secondary">Regresar</router-link>
                     </div>
                 </form>
             </div>

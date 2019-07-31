@@ -1,45 +1,42 @@
 <template>
   <div id="app">
-    <div class="container is-fluid">
-      <br>
-      <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <router-link :to="{name: 'ProductList'}" class="navbar-item">{{ app_name }}</router-link>
-          <router-link :to="{name: 'ProductList'}" class="navbar-item">Inicio</router-link>
-          <router-link :to="{name: 'ProductCreate'}" class="navbar-item">Productos</router-link>
+    <div class="container-fluid">
+      <br />
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <router-link :to="{name: 'ProductList'}" class="navbar-brand">{{ app_name }}</router-link>
 
-          <!-- <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="true" data-target="navbarMenuItems">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a> -->
-        </div> <!-- end .navbar-brand -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-        <!-- Navbar Menu -->
-        <!-- <div id="navbarMenuItems" class="navbar-menu">
-          <div class="navbar-start">
-            <router-link :to="{name: 'ProductList'}" class="navbar-item">Inicio</router-link>
-            <router-link :to="{name: 'ProductCreate'}" class="navbar-item">Productos</router-link>
-          </div>
-        </div> -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<router-link :to="{name: 'ProductList'}" class="nav-link">Inicio</router-link>
+				</li>
+				<li class="nav-item">
+					<router-link :to="{name: 'ProductCreate'}" class="nav-link">Productos</router-link>
+				</li>
+			</ul>
+        </div>
       </nav>
 
-      <br>
+      <br />
       <router-view></router-view>
     </div>
-    
   </div>
 </template>
 
 <script>
-import ListProducts from './components/ListProducts.vue'
-import CreateProduct from './components/CreateProduct.vue'
-import UpdateProduct from './components/UpdateProduct.vue'
-import ProductEntrada from './components/ProductEntrada.vue'
-import ProductSalida from './components/ProductSalida.vue'
+import ListProducts from "./components/ListProducts.vue";
+import CreateProduct from "./components/CreateProduct.vue";
+import UpdateProduct from "./components/UpdateProduct.vue";
+import ProductEntrada from "./components/ProductEntrada.vue";
+import ProductSalida from "./components/ProductSalida.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     ListProducts,
     CreateProduct,
@@ -47,10 +44,10 @@ export default {
     ProductEntrada,
     ProductSalida
   },
-  data () {
+  data() {
     return {
-      app_name: 'Mi Inventario'
-    }
+      app_name: "Mi Inventario"
+    };
   }
-}
+};
 </script>
