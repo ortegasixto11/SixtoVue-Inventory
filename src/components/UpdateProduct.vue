@@ -19,10 +19,7 @@
                         <input type="text" class="form-control" id="producto_cantidad" v-model="product.cantidad" />
                     </div>
 
-                    <div class="form-group">
-                        <button class="btn btn-success" type="submit">Guardar</button>
-                        <router-link :to="{name: 'ProductList'}" class="btn btn-secondary">Regresar</router-link>
-                    </div>
+                    <button-group-save></button-group-save>
                 </form>
             </div>
         </div>
@@ -32,6 +29,8 @@
 
 <script>
 import {dbFirebase} from '../config/firebase'
+
+import ButtonGroupSave from './UI/ButtonGroupSave.vue'
 
 export default {
     mounted(){
@@ -62,6 +61,9 @@ export default {
             this.product.nombre = product.nombre
             this.product.cantidad = product.cantidad
         }
+    },
+    components: {
+        ButtonGroupSave
     }
 }
 </script>

@@ -35,6 +35,9 @@ import UpdateProduct from "./components/UpdateProduct.vue";
 import ProductEntrada from "./components/ProductEntrada.vue";
 import ProductSalida from "./components/ProductSalida.vue";
 
+// Componentes de UI
+import ButtonGroupSave from './components/UI/ButtonGroupSave.vue'
+
 export default {
   name: "app",
   components: {
@@ -42,7 +45,8 @@ export default {
     CreateProduct,
     UpdateProduct,
     ProductEntrada,
-    ProductSalida
+    ProductSalida,
+    ButtonGroupSave
   },
   data() {
     return {
