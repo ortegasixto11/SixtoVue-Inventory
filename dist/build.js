@@ -3210,7 +3210,7 @@ process.umask = function() { return 0; };
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ListProducts_vue__ = __webpack_require__(11);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3ec6bc90_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ListProducts_vue__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1808f4e0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ListProducts_vue__ = __webpack_require__(37);
 var normalizeComponent = __webpack_require__(3)
 /* script */
 
@@ -3227,7 +3227,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_ListProducts_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3ec6bc90_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ListProducts_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_1808f4e0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_ListProducts_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -3302,7 +3302,8 @@ var Component = normalizeComponent(
                 this.products.push({
                     id: key,
                     nombre: products[key].nombre,
-                    cantidad: products[key].cantidad
+                    cantidad: products[key].cantidad,
+                    cantidad_baja: products[key].cantidad < 2 ? true : false
                 });
             }
             this.products = this.products.sort(function (a, b) {
@@ -66179,7 +66180,7 @@ registerInstallations(__WEBPACK_IMPORTED_MODULE_0__firebase_app___default.a);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container"},[_c('center',[_c('h2',[_vm._v("Listado de Productos")]),_vm._v(" "),_c('div',{staticClass:"table-responsive-sm"},[_c('table',{staticClass:"table table-bordered table-sm"},[_c('thead',{staticClass:"bg-info"},[_c('tr',[_c('th',[_vm._v("Nombre")]),_vm._v(" "),_c('th',[_vm._v("Cantidad")]),_vm._v(" "),_c('th',[_vm._v("Eliminar")]),_vm._v(" "),_c('th',[_vm._v("Editar")]),_vm._v(" "),_c('th',[_vm._v("Entrada")]),_vm._v(" "),_c('th',[_vm._v("Salida")])])]),_vm._v(" "),_c('tbody',_vm._l((_vm.products),function(item){return _c('tr',{key:item['.key']},[_c('td',[_vm._v(_vm._s(item.nombre))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(item.cantidad))]),_vm._v(" "),_c('td',[_c('button',{staticClass:"btn btn-danger",on:{"click":function($event){return _vm.deleteProduct(item.id)}}},[_vm._v("Eliminar")])]),_vm._v(" "),_c('td',[_c('router-link',{staticClass:"btn btn-warning",attrs:{"to":{name: 'ProductUpdate', params: { id: item.id }}}},[_vm._v("Editar")])],1),_vm._v(" "),_c('td',[_c('router-link',{staticClass:"btn btn-info",attrs:{"to":{name: 'ProductIn', params: { id: item.id }}}},[_vm._v("Entrada")])],1),_vm._v(" "),_c('td',[_c('router-link',{staticClass:"btn btn-info",attrs:{"to":{name: 'ProductOut', params: { id: item.id }}}},[_vm._v("Salida")])],1)])}),0)])])]),_vm._v(" "),_c('br')],1)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container"},[_c('center',[_c('h2',[_vm._v("Listado de Productos")]),_vm._v(" "),_c('div',{staticClass:"table-responsive-sm"},[_c('table',{staticClass:"table table-bordered table-sm"},[_c('thead',{staticClass:"bg-info"},[_c('tr',[_c('th',[_vm._v("Nombre")]),_vm._v(" "),_c('th',[_vm._v("Cantidad")]),_vm._v(" "),_c('th',[_vm._v("Entrada")]),_vm._v(" "),_c('th',[_vm._v("Salida")]),_vm._v(" "),_c('th',[_vm._v("Editar")]),_vm._v(" "),_c('th',[_vm._v("Eliminar")])])]),_vm._v(" "),_c('tbody',_vm._l((_vm.products),function(item){return _c('tr',{key:item['.key'],class:{'table-danger' : item.cantidad_baja}},[_c('td',[_vm._v(_vm._s(item.nombre))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(item.cantidad))]),_vm._v(" "),_c('td',[_c('router-link',{staticClass:"btn btn-info",attrs:{"to":{name: 'ProductIn', params: { id: item.id }}}},[_vm._v("Entrada")])],1),_vm._v(" "),_c('td',[_c('router-link',{staticClass:"btn btn-info",attrs:{"to":{name: 'ProductOut', params: { id: item.id }}}},[_vm._v("Salida")])],1),_vm._v(" "),_c('td',[_c('router-link',{staticClass:"btn btn-warning",attrs:{"to":{name: 'ProductUpdate', params: { id: item.id }}}},[_vm._v("Editar")])],1),_vm._v(" "),_c('td',[_c('button',{staticClass:"btn btn-danger",on:{"click":function($event){return _vm.deleteProduct(item.id)}}},[_vm._v("Eliminar")])])])}),0)])])]),_vm._v(" "),_c('br')],1)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
